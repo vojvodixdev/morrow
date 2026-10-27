@@ -11,7 +11,7 @@ The cans are real-time 3D, built entirely in code with Three.js. There are no re
 ## Features
 
 - **Cover-flow row of 3D cans.** The can in the middle sits under a spotlight. The cans on the sides are smaller, darker and turned toward the center, and every can has a soft reflection in the floor.
-- **Intro.** The cans start in the dark. The lights come on one by one from the ends toward the middle while the camera slowly moves in. While the 3D loads, a still image of that first frame is shown, so the stage is never empty.
+- **Intro.** The cans start in the dark. The lights come on one by one from the ends toward the middle while the camera slowly moves in. While the 3D loads, a still image of that first frame is shown, scaled to the same camera framing, so it lines up exactly with the 3D scene when it takes over.
 - **Can details.** Clicking the middle can turns it around to show the nutrition table on its back, and a panel opens with taste, nutrition, ingredients and price.
 - **Procedural cans.** The can body is a cylinder, and the top and bottom are a profile spun around an axis (`LatheGeometry`). The labels are drawn on a 2D canvas and used as a texture. The middle can has condensation drops (`InstancedMesh`).
 - **Harvest calendar.** Shows when each fruit is picked, with a "now" marker and an "in season now" line based on today's date.
@@ -28,7 +28,7 @@ Plain HTML, CSS and JavaScript (ES modules), with no build step. Three.js 0.169 
 index.html              content
 css/style.css           styles
 js/main.js              3D scene, intro, bag, calendar, form
-img/                    favicon, link preview, loading images
+img/                    favicon, link preview, loading image
 tests/site.spec.js      Playwright tests
 .github/workflows/      runs the tests on every push
 ```

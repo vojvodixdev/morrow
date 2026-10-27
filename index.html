@@ -20,6 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://vojvodixdev.github.io/morrow/img/og.jpg">
 <meta name="theme-color" content="#3d0811">
+<link rel="preload" as="image" href="img/poster.webp">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add("js");</script>
 <script type="importmap">
@@ -57,10 +58,7 @@
     <div class="stage" id="stage">
       <p class="bigword" id="bigword" aria-hidden="true">CHERRY</p>
       <!-- Slika dok se 3D učitava -->
-      <picture class="poster" aria-hidden="true">
-        <source media="(max-width: 860px)" srcset="img/poster-m.webp">
-        <img src="img/poster.webp" alt="" decoding="async">
-      </picture>
+      <div class="poster" aria-hidden="true"><img src="img/poster.webp" alt="" width="4000" height="1260" decoding="async"></div>
       <canvas id="cans" tabindex="0" aria-label="Morrow cans in a row. Use left and right arrows to pick a flavor, Enter to see details."></canvas>
       <button type="button" class="pause" id="pause" aria-pressed="false">Pause</button>
 
