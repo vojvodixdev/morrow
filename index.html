@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morrow · Cold-pressed juice from the Morava valley</title>
+<meta name="description" content="Morrow is a fictional juice brand: five cold-pressed fruits from the Morava valley in Serbia, in 330 ml cans. A portfolio project by Nikola Vojvodić.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Morrow · Cold-pressed juice from the Morava valley">
+<meta property="og:description" content="Five fruits. One valley. Nothing added. A fictional juice brand with real-time 3D cans, by Nikola Vojvodić.">
+<meta property="og:url" content="https://vojvodixdev.github.io/morrow/">
+<meta property="og:image" content="https://vojvodixdev.github.io/morrow/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://vojvodixdev.github.io/morrow/img/og.jpg">
+<meta name="theme-color" content="#3d0811">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<header class="nav gutter" id="nav">
+  <a class="logo" href="#top" aria-label="Morrow, back to top">MORROW</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#flavors">Flavors</a></li>
+      <li><a href="#how">How it's made</a></li>
+      <li><a href="#harvest">Harvest</a></li>
+      <li><a href="#shop">Shop</a></li>
+    </ul>
+  </nav>
+  <button type="button" class="bag-btn" id="bag-open" aria-label="Open bag, 0 items">
+    Bag <span class="badge" id="bag-count">0</span>
+  </button>
+</header>
+
+<main id="top">
+  <!-- Naslovna: linija limenki -->
+  <section class="hero" id="flavors" aria-label="Flavors">
+    <div class="hero-copy gutter">
+      <p class="eyebrow">Cold-pressed juice · Morava valley, Serbia</p>
+      <h1>Five fruits. One valley. Nothing added.</h1>
+    </div>
+
+    <div class="stage" id="stage">
+      <p class="bigword" id="bigword" aria-hidden="true">CHERRY</p>
+      <!-- Slika dok se 3D učitava -->
+      <picture class="poster" aria-hidden="true">
+        <source media="(max-width: 860px)" srcset="img/poster-m.webp">
+        <img src="img/poster.webp" alt="" decoding="async">
+      </picture>
+      <canvas id="cans" tabindex="0" aria-label="Morrow cans in a row. Use left and right arrows to pick a flavor, Enter to see details."></canvas>
+      <button type="button" class="pause" id="pause" aria-pressed="false">Pause</button>
+
+      <aside class="detail" id="detail" aria-labelledby="d-name">
+        <button type="button" class="back" id="back">← All flavors</button>
+        <h2 id="d-name">Sour Cherry</h2>
+        <p class="d-lead" id="d-desc"></p>
+        <div class="buy">
+          <span class="price" id="d-price">€2.40</span>
+          <button type="button" class="btn btn-cream" id="d-add">Add to bag</button>
+        </div>
+        <h3>Taste</h3>
+        <div id="d-taste"></div>
+        <h3>Nutrition per 100 ml</h3>
+        <table class="nutri"><tbody id="d-nutri"></tbody></table>
+        <h3>Ingredients</h3>
+        <p class="d-lead" id="d-ing"></p>
+        <div class="chips" id="d-chips"></div>
+      </aside>
+    </div>
+
+    <div class="hero-bar gutter" id="hero-bar">
+      <button type="button" class="arrow" id="prev" aria-label="Previous flavor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="now" aria-live="polite">
+        <p class="now-count" id="count">01 / 05 · picked in June</p>
+        <p class="now-name swap" id="name">Sour Cherry</p>
+        <p class="now-tag swap" id="tagline">Tart, dark and cold-pressed.</p>
+        <p class="now-tip">Open the can in the middle for details</p>
+      </div>
+      <button type="button" class="arrow" id="next" aria-label="Next flavor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Kratke činjenice -->
+  <section class="facts gutter" aria-label="What's in the can">
+    <ul>
+      <li><strong>0 g</strong> added sugar</li>
+      <li><strong>24 h</strong> from tree to press</li>
+      <li><strong>330 ml</strong> aluminium can</li>
+      <li><strong>5</strong> fruits, in harvest order</li>
+    </ul>
+  </section>
+
+  <!-- Proces -->
+  <section class="section paper gutter" id="how">
+    <div class="wrap">
+      <p class="label">How it's made</p>
+      <h2 class="title">From orchard to can in three steps.</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-n">01</span>
+          <h3>Picked ripe</h3>
+          <p>Every fruit is picked in its own season, in orchards around Čačak. Nothing is stored for months and pressed later.</p>
+        </li>
+        <li>
+          <span class="step-n">02</span>
+          <h3>Pressed cold</h3>
+          <p>Within a day the fruit goes into a hydraulic press. There is no heat, so the juice keeps the taste of the fruit.</p>
+        </li>
+        <li>
+          <span class="step-n">03</span>
+          <h3>Canned</h3>
+          <p>The juice goes straight into 330 ml aluminium cans. They keep out light and air, and they recycle again and again.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Kalendar berbe -->
+  <section class="section paper-2 gutter" id="harvest">
+    <div class="wrap">
+      <p class="label">Harvest calendar</p>
+      <h2 class="title">Each flavor arrives with its fruit.</h2>
+      <p class="intro" id="in-season">In season now: green apple and quince.</p>
+      <div class="cal" role="table" aria-label="Harvest months for each fruit">
+        <div class="cal-row cal-head" role="row">
+          <span role="columnheader" class="cal-fruit">Fruit</span>
+          <div class="cal-months" aria-hidden="true">
+            <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+          </div>
+        </div>
+        <div id="cal-rows"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prodavnica -->
+  <section class="section paper gutter" id="shop">
+    <div class="wrap">
+      <p class="label">Shop</p>
+      <h2 class="title">Pick a can, or let the seasons pick for you.</h2>
+      <div class="offers">
+        <article class="offer">
+          <h3>Mixed six-pack</h3>
+          <p>One can of every flavor, plus a second sour cherry, because it goes first.</p>
+          <div class="offer-buy"><span class="price">€13.50</span><button type="button" class="btn btn-ink" data-add="six">Add to bag</button></div>
+        </article>
+        <article class="offer offer-feature">
+          <h3>Harvest crate</h3>
+          <p>24 cans, sent in four boxes through the year. Each box arrives when a new fruit comes in.</p>
+          <div class="offer-buy"><span class="price">€49.00</span><button type="button" class="btn btn-cream" data-add="crate">Add to bag</button></div>
+        </article>
+        <article class="offer">
+          <h3>Single cans</h3>
+          <p>Any flavor, one at a time. Open a can in the row above and add it from there.</p>
+          <div class="offer-buy"><span class="price">from €2.40</span><a class="btn btn-ink" href="#flavors">See flavors</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section letters gutter" id="letters">
+    <div class="wrap letters-inner">
+      <div>
+        <p class="label">Harvest letters</p>
+        <h2 class="title">One email when each fruit comes in.</h2>
+        <p class="intro">Five emails a year, never more. You'll know when the cherries are in before anyone else.</p>
+      </div>
+      <form class="signup" id="signup" novalidate>
+        <label for="email">Email address</label>
+        <div class="signup-row">
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn-ink">Sign up</button>
+        </div>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer gutter">
+  <div class="wrap">
+    <p class="footer-mark" aria-hidden="true">MORROW</p>
+    <div class="footer-cols">
+      <div>
+        <h3>Flavors</h3>
+        <ul id="footer-flavors"></ul>
+      </div>
+      <div>
+        <h3>Morrow</h3>
+        <ul>
+          <li><a href="#how">How it's made</a></li>
+          <li><a href="#harvest">Harvest calendar</a></li>
+          <li><a href="#letters">Harvest letters</a></li>
+        </ul>
+      </div>
+      <div class="footer-about">
+        <h3>About this site</h3>
+        <p>Morrow is a fictional brand. The cans are built in code with Three.js, with no ready-made 3D models or stock photos.</p>
+        <p><a class="nv-credit" href="https://vojvodixdev.github.io/" rel="author"><svg class="nv-mark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#4d8dff"/><text x="12" y="16.2" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" font-weight="700" fill="#020611">NV</text></svg><span>Made by Nikola Vojvodić</span></a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<dialog class="drawer" id="bag" aria-labelledby="bag-title">
+  <div class="drawer-head">
+    <h2 id="bag-title">Your bag</h2>
+    <button type="button" class="close" id="bag-close" aria-label="Close bag">✕</button>
+  </div>
+  <ul class="bag-list" id="bag-list"></ul>
+  <div class="drawer-foot">
+    <div class="subtotal"><span>Subtotal</span><strong id="bag-total">€0.00</strong></div>
+    <button type="button" class="btn btn-ink wide" disabled>Checkout</button>
+    <p class="note">This is a demo shop, so checkout is turned off.</p>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
