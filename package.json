@@ -2,6 +2,7 @@
   "name": "morrow",
   "private": true,
   "description": "Site for Morrow, a fictional cold-pressed juice brand with real-time 3D cans.",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "serve -l 4173 .",
     "test": "playwright test"

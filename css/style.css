@@ -1,3 +1,4 @@
+/* © 2026 Nikola Vojvodić · https://vojvodixdev.github.io/ · All rights reserved, see LICENSE. [nv:cebe1f9421] */
 /* Morrow · stilovi. Naslovna je tamna u boji izabranog voća, ostatak stranice je na svetloj "papir" pozadini. */
 
 :root {
@@ -288,3 +289,6 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Autorski link: vidi se samo kad sajt radi na tuđem domenu */
+.nv-original { position: fixed; left: 12px; bottom: 12px; z-index: 2147483000; padding: 8px 14px; border-radius: 999px; background: #4d8dff; color: #020611; font: 600 13px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif; text-decoration: none; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); }

@@ -1,3 +1,4 @@
+// © 2026 Nikola Vojvodić · https://vojvodixdev.github.io/ · All rights reserved, see LICENSE. [nv:cebe1f9421]
 // Morrow · 3D linija limenki (Three.js), korpa, kalendar berbe i forma
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -703,3 +704,17 @@ fontsReady.then(() => {
   setRunning();
   document.fonts.ready.then(buildLabels);
 });
+
+/* Autorska prava: kad sajt radi na tuđem domenu, prikaže link ka originalu. Za sopstveni domen dodaj ga u HOMES. */
+(function () {
+  var HOMES = ["vojvodixdev.github.io", "localhost", "127.0.0.1", "[::1]", ""];
+  var host = location.hostname;
+  if (HOMES.indexOf(host) > -1 || /\.localhost$/.test(host)) return;
+  var link = document.createElement("a");
+  link.className = "nv-original";
+  link.href = "https://vojvodixdev.github.io/";
+  link.textContent = "Original work by Nikola Vojvodić";
+  link.setAttribute("data-nv", "nv:cebe1f9421");
+  document.body.appendChild(link);
+  console.warn("This page is a copy of work by Nikola Vojvodić (© 2026, all rights reserved): https://vojvodixdev.github.io/ [nv:cebe1f9421]");
+})();

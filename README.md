@@ -65,3 +65,7 @@ Tests are never retried. A test that only passes on a second try is a flaky test
 ---
 
 Morrow is a fictional brand. Design and code by [Nikola Vojvodić](https://vojvodixdev.github.io/).
+
+## License
+
+© 2026 Nikola Vojvodić. All rights reserved. The code is public so it can be read and evaluated as part of my portfolio; it is not open source. See [LICENSE](LICENSE) for what is and isn't allowed.
